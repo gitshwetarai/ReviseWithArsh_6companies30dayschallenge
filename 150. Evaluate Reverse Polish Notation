@@ -1,1 +1,24 @@
+class Solution {
+    public int evalRPN(String[] t) {
+        Stack<Integer> ar = new Stack<>();
+        for(String s:t){
+            if(s.equals("+")){
+                ar.push(ar.pop()+ar.pop());
+            }
+            else if(s.equals("-")){
+                ar.push(-ar.pop()+ar.pop());
+            }
+            else if(s.equals("*")){
+                ar.push(ar.pop()*ar.pop());
+            }
+            else if(s.equals("/")){
+                ar.push((int)((1/(double)ar.pop())*ar.pop()));
+            }
+            else{
+                ar.push(Integer.valueOf(s));
+            }
 
+        }
+        return ar.pop();
+    }
+}
